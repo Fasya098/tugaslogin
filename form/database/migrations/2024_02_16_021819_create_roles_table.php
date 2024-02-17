@@ -8,11 +8,14 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
+     *
+     * @return void
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('roles', function (Blueprint $table) {
             $table->id();
+            // nama role
             $table->string('role_name')->unique();
             $table->timestamps();
         });
@@ -20,8 +23,10 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
+     *
+     * @return void
      */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('roles');
     }
