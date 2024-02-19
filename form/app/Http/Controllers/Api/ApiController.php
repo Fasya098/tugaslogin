@@ -32,7 +32,7 @@ class ApiController extends Controller
         //response
         return response()->json([
             'status' => true,
-            'message' => 'anda login sebagai user'
+            'message' => 'akun user telah terbuat'
         ]);
     }
 
@@ -51,19 +51,33 @@ class ApiController extends Controller
             'password'=>$request->password
         ]);
 
-        if (!empty($token)){
-            //response
-            return response()->json([
-            'status' => true,
-            'message' => 'user berhasil login',
-            'token' => $token
-        ]);
-        }
+        $user = auth()->user();
+    
+            $role = $user->role_id; 
+            if($role === 1){
+                return response()->json([
+                    'status' => true,
+                    'user' => $user,
+                    'token' => $token,
+                    'message' => 'selamat datang admin',
+                    'role' => $role
+                ], 200);
+            }elseif($role === 2){
+                return response()->json([
+                    'status' => true,
+                    'user' => $user,
+                    'token' => $token,
+                    'message' => 'selamat datang user',
+                    'role' => $role
+
+                ], 200);
+            } else {
 
         return response()->json([
             'status' => false,
             'message' => 'login gagal'
         ]);
+    }
     }
 
     //profile api (get)
