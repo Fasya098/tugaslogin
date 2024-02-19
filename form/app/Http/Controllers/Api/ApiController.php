@@ -25,13 +25,14 @@ class ApiController extends Controller
         User::create([
             'name'      =>$request->name,
             'email'     =>$request->email,
-            'password'  => Hash::make ($request->password)
+            'password'  => Hash::make ($request->password),
+            'role_id'   => 2
         ]);
 
         //response
         return response()->json([
             'status' => true,
-            'message' => 'data berhasil disimpan'
+            'message' => 'anda login sebagai user'
         ]);
     }
 
@@ -54,7 +55,7 @@ class ApiController extends Controller
             //response
             return response()->json([
             'status' => true,
-            'message' => 'user login berhasil',
+            'message' => 'user berhasil login',
             'token' => $token
         ]);
         }
