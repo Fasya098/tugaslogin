@@ -1,7 +1,8 @@
 <template>
+  <div class="d-flex justify-content-center">
   <div class="card">
-    <div class="card-header">Register Form</div>
-    <div class="card-body">
+  <div class="card-header" style="background-color: darkgray;">Login</div>
+  <div class="card-body" style="background-color: chartreuse;">
     <form @submit.prevent="LoginData">
       <div class="form-group">
         <label for="">Email</label>
@@ -10,6 +11,7 @@
           v-model="student.email"
           class="form-control"
           placeholder="masukkan email"
+          style="margin-bottom: 10px;"
         />
       </div>
 
@@ -20,6 +22,7 @@
           v-model="student.password"
           class="form-control"
           placeholder="masukkan password"
+          style="margin-bottom: 25px;"
         />
       </div>
       <input type="submit" value="Login" class="btn btn-success" />
@@ -27,6 +30,7 @@
     </form>
     </div>
     </div>
+  </div>
 
 </template>
 

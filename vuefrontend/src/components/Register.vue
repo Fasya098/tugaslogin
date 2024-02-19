@@ -1,6 +1,7 @@
 <template>
-  <div class="card">
-    <div class="card-header">Register Form</div>
+  <div class="d-flex justify-content-center">
+  <div class="card" style="background-color: yellow;">
+    <div class="card-header" style="background-color: darkgrey;">Register Form</div>
     <div class="card-body">
       <form @submit.prevent="saveData">
         <label>First Name</label>
@@ -43,6 +44,7 @@
       </form>
     </div>  
   </div>
+</div>
 </template>
 
 <script>

@@ -1,7 +1,7 @@
 <template>
   <div>
       <h1>Welcome to Home Page</h1>
-      <a v-on:click="logout" href="#">Logout</a>
+      <button v-on:click="logout">Logout</button>
   </div>
 </template>
 
