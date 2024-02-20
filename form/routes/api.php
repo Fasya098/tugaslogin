@@ -15,7 +15,9 @@ Route::post('login', [ApiController::class, 'login']);
 Route::group([
     'middleware' => ['auth:api']
 ], function(){
-    Route::get('profile', [ApiController::class, 'profile']);
-    Route::get('refresh', [ApiController::class, 'refreshToken']);
+    Route::get('show', [ApiController::class, 'show']);
+    Route::get('get/{id}', [ApiController::class, 'getUser']);
+    Route::post('update/{id}', [ApiController::class, 'updateUser']);
+    Route::delete('deleteUser/{id}', [ApiController::class, 'deleteUser']);
     Route::get('logout', [ApiController::class, 'logout']);
 });

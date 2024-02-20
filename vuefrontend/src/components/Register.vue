@@ -7,7 +7,7 @@
         <label>First Name</label>
         <input
           type="text"
-          v-model="student.name"
+          v-model="user.name"
           name="name"
           id="name"
           class="form-control"
@@ -16,7 +16,7 @@
         <label>Email</label>
         <input
           type="email"
-          v-model="student.email"
+          v-model="user.email"
           name="email"
           id="email"
           class="form-control"
@@ -25,7 +25,7 @@
         <label>Password</label>
         <input
           type="password"
-          v-model="student.password"
+          v-model="user.password"
           name="password"
           id="password"
           class="form-control"
@@ -34,7 +34,7 @@
         <label>Password Confirmation</label>
         <input
           type="password_confirmation"
-          v-model="student.password_confirmation"
+          v-model="user.password_confirmation"
           name="password_confirmation"
           id="password_confirmation"
           class="form-control"
@@ -57,7 +57,7 @@ export default {
   data() {
     return {
       result: {},
-      student: {
+      user: {
         name: "",
         email: "",
         password: "",
@@ -70,7 +70,7 @@ export default {
   },
   methods: {
     saveData() {
-      axios.post("http://127.0.0.1:8000/api/register", this.student)
+      axios.post("http://127.0.0.1:8000/api/register", this.user)
         .then(({ data }) => {
           console.log(data);
           try {

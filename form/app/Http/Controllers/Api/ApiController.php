@@ -80,26 +80,50 @@ class ApiController extends Controller
     }
     }
 
-    //profile api (get)
-    public function profile(){
-        $userData = auth()->user();
+    //lihat data
+    public function show(){
+        $input = User::all();
 
         return response()->json([
-            "status"    => true,
-            "message"   => 'profil data',
-            "user"      => $userData
+            'user'    => $input,
+            'message' => 'User',
+            'code' => 200
         ]);
     }
+    
+    public function getUser($id){
+        $use = User::find($id);
+        return response()->json($use);
+    }
 
-    //refresh token api (get)
-    public function refreshToken(){
-        $newToken = auth()->refresh();
-
+    public function updateData($id,  Request $request){
+        $usr = User::where('id',$id)->first();
+        $usr->name = $request->name;
+        $usr->email = $request->email;
+        $usr->save();
+        //return response JSON user is created
         return response()->json([
-            "status" => true,
-            "message" => "new token telah dibuat",
-            "token" => $newToken
-        ]);
+            'success' => true,
+            'user'    => $usr,
+            'status' => 200,
+            'message' => 'Successfully Edit Data' 
+        ], 200);
+    }
+
+    //Hapus User
+    public function deleteUser($id){
+        $usr = User::find($id);
+        if($usr){
+            $usr->delete();
+            return response()->json([
+                'message' => "Data successfully deleted",
+                'code' => 200
+            ]);
+        }else{
+            return response([
+                'message' => "Failed delete data $id / data doesn't exists"
+            ]);
+        }
     }
 
     //logout api (get)

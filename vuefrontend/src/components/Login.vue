@@ -8,7 +8,7 @@
         <label for="">Email</label>
         <input
           type="email"
-          v-model="student.email"
+          v-model="user.email"
           class="form-control"
           placeholder="masukkan email"
           style="margin-bottom: 10px;"
@@ -19,7 +19,7 @@
         <label for="">Password</label>
         <input
           type="password"
-          v-model="student.password"
+          v-model="user.password"
           class="form-control"
           placeholder="masukkan password"
           style="margin-bottom: 25px;"
@@ -44,7 +44,7 @@ export default {
   data() {
     return {
       result: {},
-      student: {
+      user: {
         email: "",
         password: "",
       },
@@ -56,22 +56,40 @@ export default {
   },
   methods: {
     LoginData() {
-      axios.post("http://127.0.0.1:8000/api/login", this.student)
-        .then(({data})=>{
-    console.log(data);
-    try {
-        if(data.status === true) {
-            alert('login sukses');
-            this.$router.push({name: 'HelloWorld'})
-        } else {
-            alert("login gagal")
+      axios.post("http://127.0.0.1:8000/api/login", this.user)
+        .then( response => {
+          const data = response.data; // Ambil data dari respons
+            // const role = response.data.role_id; // Ambil data dari respons
+            // Cek apakah respons memiliki token
+            const role = data.role
+            console.log("role id=", data.role)
+            if (data.token) {
+                // Simpan token di localStorage
+                localStorage.setItem('jwt', data.token);
+                if(role === 1){
+                    // Redirect ke halaman HelloWorld setelah login berhasil
+                    this.$router.push({ name: 'AdminPage' });
+                    alert("Login Sebagai Admin");
+                }else if(role === 2){
+                    // Redirect ke halaman HelloWorld setelah login berhasil
+                    this.$router.push({ name: 'UserPage' });
+                    alert("Login Sebagai User");
+                }else{
+                    alert('user tidak terdaftar')
+                }
+            } else {
+                // Jika respons tidak memiliki token, tampilkan pesan kesalahan
+                alert("Login Gagal");
+            }
+        })
+        .catch(error => {
+            // Tangani kesalahan ketika mengirim permintaan
+            console.error('Login failed:', error);
+            alert('Login failed. Please try again.');
+        });
         }
-    } catch (err) {
-        alert("eror, coba lagi")
+                
+        }
+        
     }
-}
-        )
-    },
-  }
-};
 </script>
