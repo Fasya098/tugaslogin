@@ -1,9 +1,15 @@
+<style>
+body {
+  background-color: rgb(0, 0, 62);
+  }
+</style>
+
 <template>
   <div class="d-flex justify-content-center">
-  <div class="card">
-  <div class="card-header" style="background-color: darkgray;">Login</div>
-  <div class="card-body" style="background-color: chartreuse;">
-    <form @submit.prevent="LoginData">
+  <div class="card" align="left" style="width: 400px; height: 400px;">
+  <div class="card-header" align="center" style="background-color: darkgray;"><b>Login</b></div>
+  <div class="card-body" style="background-color: yellow;">
+    <form @submit.prevent="LoginData" style="margin-top: 15px;">
       <div class="form-group">
         <label for="">Email</label>
         <input
@@ -24,9 +30,19 @@
           placeholder="masukkan password"
           style="margin-bottom: 25px;"
         />
-      </div>
-      <input type="submit" value="Login" class="btn btn-success" />
+
+      <div align="center">
+      <input type="submit" value="Login" class="btn btn-success" style="width: 250px;"/>
+      <br>
+      <br>
       
+      <p>Belum Memiliki Akun?</p>
+      <router-link :to="{name: 'Register'}"> 
+      <input type="button" value="Daftar Disini" class="btn btn-primary" style="width: 250px;"/>
+      </router-link>
+      </div>
+      </div>
+
     </form>
     </div>
     </div>

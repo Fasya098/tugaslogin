@@ -8,10 +8,10 @@
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
               <router-link class="nav-link active" aria-current="page" to="/listuser">Data User</router-link>
-              <router-link class="nav-link" to="tambahuser">Add User</router-link>
+              <router-link class="nav-link" to="/tambahuser">Add User</router-link>
             </div>
             <div class="navbar-nav position-absolute end-0 pe-5">
-              <button class="nav-link active bg-secondary rounded" v-on:click="logout" to="/login">Log Out</button>
+              <button class="btn btn-outline-danger" to="/login">Log Out</button>
             </div>
           </div>
         </div>

@@ -1,3 +1,10 @@
+<style>
+body {
+  background-color: rgb(0, 0, 62);
+}
+
+</style>
+
 <template>
     <div class="container">
       <Nav />
@@ -13,6 +20,9 @@
   
             <label class="py-2">Password</label>
             <input type="password" v-model="user.password" name="password" id="password" class="form-control" required/>
+
+            <label class="py-2">Password Confirmation</label>
+            <input type="password" v-model="user.password_confirmation" name="password_confirmation" id="password_confirmation" class="form-control" required/>
   
             <input type="submit" value="Save" class="btn btn-success position-relative" style="margin-top: 0.6em; margin-left: 43%"/>
           </form>
@@ -49,12 +59,12 @@
     methods: {
       saveData() {
         axios
-          .post("http://127.0.0.1:8000/api/regis", this.user)
+          .post("http://127.0.0.1:8000/api/register ", this.user)
           .then(({ data }) => {
             console.log(data);
             try {
               alert("Data successfully uploaded");
-              this.$router.push({ name: "AdminPage" });
+              this.$router.push({ name: "ListUser" });
             } catch (error) {
               alert(error);
             }

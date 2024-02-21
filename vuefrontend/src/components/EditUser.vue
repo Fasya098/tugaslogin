@@ -1,3 +1,10 @@
+<style>
+body {
+  background-color: rgb(0, 0, 62);
+}
+
+</style>
+
 <template>
     <div class="card" style="width: 40vw; position: absolute; left: 30vw;">
       <div class="card-header fw-bolder">Edit User</div>

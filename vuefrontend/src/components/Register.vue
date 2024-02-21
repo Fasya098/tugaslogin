@@ -1,18 +1,26 @@
+<style>
+body {
+  background-color: rgb(0, 0, 62);
+}
+
+</style>
+
 <template>
   <div class="d-flex justify-content-center">
-  <div class="card" style="background-color: yellow;">
-    <div class="card-header" style="background-color: darkgrey;">Register Form</div>
-    <div class="card-body">
+  <div class="card" align="left" style="background-color: yellow; width :400px ">
+  <div class="card-header" align="center" style="background-color: darkgrey;"><b>REGISTER</b></div>
+  <div class="card-body">
       <form @submit.prevent="saveData">
-        <label>First Name</label>
+        <label>Nama Lengkap</label>
         <input
           type="text"
           v-model="user.name"
           name="name"
           id="name"
           class="form-control"
+          placeholder="Jenengmu"
         />
-
+        <br>
         <label>Email</label>
         <input
           type="email"
@@ -20,8 +28,9 @@
           name="email"
           id="email"
           class="form-control"
+          placeholder="Emailmu"
         />
-
+        <br>
         <label>Password</label>
         <input
           type="password"
@@ -29,18 +38,26 @@
           name="password"
           id="password"
           class="form-control"
+          placeholder="masukkan password"
         />
-
+        <br>
         <label>Password Confirmation</label>
         <input
-          type="password_confirmation"
+          type="password"
           v-model="user.password_confirmation"
           name="password_confirmation"
           id="password_confirmation"
           class="form-control"
+          placeholder="ulangi password"
         />
-
-        <input type="submit" value="Save" class="btn btn-success" />
+        <br>
+      <div align="center">
+        <input type="submit" value="DAFTAR" class="btn btn-success" style="width: 250px;">
+          <br>
+        <router-link :to="{name: 'Login'}"> <br>
+        <input type="button" value="LOGIN" class="btn btn-primary" style="width: 250px;" >
+        </router-link>
+      </div>
       </form>
     </div>  
   </div>

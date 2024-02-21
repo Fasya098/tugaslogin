@@ -1,3 +1,10 @@
+<style>
+body {
+  background-color: rgb(0, 0, 62);
+}
+
+</style>
+
 <template>
     <div class="container">
         <Nav />
