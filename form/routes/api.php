@@ -17,7 +17,7 @@ Route::group([
 ], function(){
     Route::get('show', [ApiController::class, 'show']);
     Route::get('get/{id}', [ApiController::class, 'getUser']);
-    Route::post('update/{id}', [ApiController::class, 'updateUser']);
+    Route::post('update/{id}', [ApiController::class, 'updateData']);
     Route::delete('deleteUser/{id}', [ApiController::class, 'deleteUser']);
     Route::get('logout', [ApiController::class, 'logout']);
 });

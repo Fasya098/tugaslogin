@@ -91,12 +91,14 @@ class ApiController extends Controller
         ]);
     }
     
+    //cari data
     public function getUser($id){
         $use = User::find($id);
         return response()->json($use);
     }
 
-    public function updateData($id,  Request $request){
+    // editdata
+    public function updateData($id, Request $request){
         $usr = User::where('id',$id)->first();
         $usr->name = $request->name;
         $usr->email = $request->email;
@@ -106,7 +108,7 @@ class ApiController extends Controller
             'success' => true,
             'user'    => $usr,
             'status' => 200,
-            'message' => 'Successfully Edit Data' 
+            'message' => 'Data telah diubah' 
         ], 200);
     }
 
@@ -116,12 +118,12 @@ class ApiController extends Controller
         if($usr){
             $usr->delete();
             return response()->json([
-                'message' => "Data successfully deleted",
+                'message' => "Data telah dihapus",
                 'code' => 200
             ]);
         }else{
             return response([
-                'message' => "Failed delete data $id / data doesn't exists"
+                'message' => "gagal menghapus $id / data tidak ditemukan"
             ]);
         }
     }

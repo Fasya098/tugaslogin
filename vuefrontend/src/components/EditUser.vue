@@ -34,14 +34,20 @@
     },
     methods: {
       async getDataById() {
-        await axios.get(`http://127.0.0.1:8000/api/get/${this.$route.params.id}`)
-        .then(response => {
-            console.log(response)
-            this.user = response.data
-        })
+        try {
+          const response = await axios.get(`http://127.0.0.1:8000/api/get/${this.$route.params.id}`, {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem('jwt')}`
+            }
+          }
+          );
+          console.log(response);
+          this.user = response.data;
+        } catch (error) {
+          console.error('Error fetching user data:', error);
         }
       },
-      async updateData() {
+      async updateData(id) {
         this.user.errors = [];
   
         if (!this.user.name.trim()) {
@@ -58,8 +64,12 @@
             formData.append('email', this.user.email);
   
             const url = `http://127.0.0.1:8000/api/update/${this.$route.params.id}`;
-            const response = await axios.post(url, formData);
-            this.$router.push({name: 'ListUser'})
+            const response = await axios.post(url, formData, {
+              headers: {
+                Authorization: `Bearer ${localStorage.getItem('jwt')}`
+              }
+            },);
+            this.$router.push({ name: 'ListUser' });
   
             if (response.status === 200) {
               alert(response.data.message);
@@ -73,5 +83,5 @@
         }
       }
     }
-  </script>
-  
+  }
+  </script>  

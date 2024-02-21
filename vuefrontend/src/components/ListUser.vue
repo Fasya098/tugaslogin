@@ -17,8 +17,8 @@
                     <td>{{ users.name}}</td>
                     <td>{{ users.email}}</td>
                     <td>{{ users.role_id}}</td>
-                    <td> <router-link :to="{name:  'EditUser', params: {id: users.id}}" class="btn btn-primary btn-sm">Update</router-link>  
-                         <button type="button"  class="btn btn-danger btn-sm" @click.prevent="deleteUser(users.id)">Delete</button></td>
+                    <td> <router-link :to="{name:  'EditUser', params: {id: users.id}}" class="btn btn-primary btn-sm">Edit</router-link>  
+                    <button type="button"  class="btn btn-danger btn-sm" @click.prevent="deleteUser(users.id)">Delete</button></td>
                 </tr>
             </tbody>
         </table>
